@@ -1,7 +1,5 @@
 # Retail Sales Analysis SQL Project
 
-**Project Title**: Retail Sales Analysis  
-
 ### Data Analysis & Findings
 
 The following SQL queries were developed to answer specific business questions:
