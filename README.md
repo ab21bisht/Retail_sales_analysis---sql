@@ -1,7 +1,5 @@
 # Retail Sales Analysis SQL Project
 
-## Project Overview
-
 **Project Title**: Retail Sales Analysis  
 
 ### Data Analysis & Findings
@@ -61,10 +59,10 @@ select year, month, avg_sale
 from 
 (
 SELECT
-    YEAR(sale_date) AS year,
-    MONTH(sale_date) AS month,
-    AVG(total_sale) AS avg_sale,
-    rank() over(partition by YEAR(sale_date) order by  AVG(total_sale) desc) as rank1
+YEAR(sale_date) AS year,
+MONTH(sale_date) AS month,
+AVG(total_sale) AS avg_sale,
+rank() over(partition by YEAR(sale_date) order by  AVG(total_sale) desc) as rank1
 FROM sales_analysis
 GROUP BY year, month
 ) as t1
@@ -93,15 +91,13 @@ group by category;
 ```sql
 with hourly_sale 
 as
-(
-select *,
+(select *,
 CASE
-	when hour(sale_time) < 12 then 'Morning'
-    when hour(sale_time) between 12 and 17 then 'Afternoon'
-    else 'Evening'
+when hour(sale_time) < 12 then 'Morning'
+when hour(sale_time) between 12 and 17 then 'Afternoon'
+else 'Evening'
 END as shift
-from sales_analysis
-)
+from sales_analysis)
 select 
 shift,
 count(*) as total_transaction
